@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/cart/cart",
+    "pages/user/user",
+    "pages/goods-detail/goods-detail",
+    "pages/address/address",
+    "pages/address-edit/address-edit",
+    "pages/order/order",
+    "pages/pay-result/pay-result",
+    "pages/order-list/order-list",
+    "pages/order-detail/order-detail",
+    "pages/logistics/logistics"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#07c160",
+    "navigationBarTitleText": "鲜果鲜蔬",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f7f7f7"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#07c160",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页", "iconPath": "assets/tabbar/home_g.png", "selectedIconPath": "assets/tabbar/home_c.png" },
+      { "pagePath": "pages/category/category", "text": "分类", "iconPath": "assets/tabbar/category_g.png", "selectedIconPath": "assets/tabbar/category_c.png" },
+      { "pagePath": "pages/cart/cart", "text": "购物车", "iconPath": "assets/tabbar/cart_g.png", "selectedIconPath": "assets/tabbar/cart_c.png" },
+      { "pagePath": "pages/user/user", "text": "我的", "iconPath": "assets/tabbar/user_g.png", "selectedIconPath": "assets/tabbar/user_c.png" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

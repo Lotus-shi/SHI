@@ -1,0 +1,42 @@
+# ===== 生鲜商城 SpringBoot 后端配置 =====
+server:
+  port: 3000
+
+spring:
+  application:
+    name: fresh-mall
+  # MySQL（与 Node 版共用同一数据库，表结构不变）
+  datasource:
+    # 注意：characterEncoding 只能写 Java 编码名（UTF-8），utf8mb4 是服务端字符集名
+    url: jdbc:mysql://127.0.0.1:3306/fresh_fruit_veggie_mall?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&useUnicode=true
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: none          # 表已存在，不由 Hibernate 建表
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password:                # 无密码
+  jackson:
+    time-zone: Asia/Shanghai
+
+# 业务配置
+app:
+  # 商品图片目录（与 Node 版共用 server/public/images）
+  images-dir: ../server/public/images
+  jwt:
+    secret: please_change_this_to_a_random_secret   # 与 Node 版 .env 保持一致（无缝切换）
+    expires-in-seconds: 604800                      # 7 天
+  wechat:
+    appid: ''                  # 留空为 mock 模式；填入真实 AppID 后自动切换真实微信登录
+    appsecret: ''
+  order:
+    pay-timeout-minutes: 30    # 超时未支付自动取消（分钟）
+    freight-free-threshold: 50 # 满 50 免运费
+    freight-price: 5           # 不满 50 运费 5 元

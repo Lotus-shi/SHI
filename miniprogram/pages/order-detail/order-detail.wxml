@@ -1,0 +1,74 @@
+<!-- 订单详情页 -->
+<view class="odetail" wx:if="{{order}}">
+  <!-- 状态栏 -->
+  <view class="odetail__status {{order.status === 4 ? 'odetail__status--cancel' : ''}}">
+    {{order.status === 4 ? '订单已取消' : statusText}}
+  </view>
+
+  <!-- 状态步骤条（已取消不展示） -->
+  <view class="odetail__steps" wx:if="{{order.status !== 4}}">
+    <view class="odetail__step" wx:for="{{steps}}" wx:key="title">
+      <view class="odetail__step-dot {{item.done ? 'odetail__step-dot--done' : ''}} {{item.active ? 'odetail__step-dot--active' : ''}}">
+        {{item.done ? '✓' : ''}}
+      </view>
+      <view class="odetail__step-title {{item.active ? 'odetail__step-title--active' : ''}}">{{item.title}}</view>
+      <view class="odetail__step-line" wx:if="{{index < steps.length - 1}}"></view>
+    </view>
+  </view>
+
+  <!-- 收货地址（快照） -->
+  <view class="odetail__section odetail__address">
+    <view class="odetail__address-top">
+      <text class="odetail__address-name">{{order.receiver}}</text>
+      <text class="odetail__address-phone">{{order.receiver_phone}}</text>
+    </view>
+    <view class="odetail__address-detail">{{order.receiver_address}}</view>
+  </view>
+
+  <!-- 商品明细 -->
+  <view class="odetail__section">
+    <view class="odetail__section-title">商品清单</view>
+    <view class="odetail__goods" wx:for="{{order.items}}" wx:key="goods_id">
+      <image class="odetail__goods-img" src="{{item.goods_image}}" mode="aspectFill" lazy-load />
+      <view class="odetail__goods-body">
+        <view class="odetail__goods-name">{{item.goods_name}}</view>
+        <view class="odetail__goods-price">
+          <text>¥{{item.price}} × {{item.quantity}}</text>
+          <text class="odetail__goods-subtotal">¥{{item.subtotal}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 金额明细 -->
+  <view class="odetail__section">
+    <view class="odetail__row"><text>商品总额</text><text>¥{{order.total_amount}}</text></view>
+    <view class="odetail__row"><text>运费</text><text>{{order.freight === '0.00' ? '免运费' : '¥' + order.freight}}</text></view>
+    <view class="odetail__row odetail__row--total"><text>实付款</text><text class="odetail__pay">¥{{order.pay_amount}}</text></view>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="odetail__section">
+    <view class="odetail__row"><text>订单编号</text><text>{{order.order_no}}</text></view>
+    <view class="odetail__row"><text>下单时间</text><text>{{formatTime(order.created_at)}}</text></view>
+    <view class="odetail__row"><text>支付时间</text><text>{{formatTime(order.paid_at)}}</text></view>
+    <view class="odetail__row" wx:if="{{order.remark}}"><text>订单备注</text><text>{{order.remark}}</text></view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="odetail__footer">
+    <view class="odetail__footer-btn" bindtap="onCallService">联系客服</view>
+    <!-- 待支付：取消 + 去支付 -->
+    <block wx:if="{{order.status === 0}}">
+      <view class="odetail__footer-btn" bindtap="onCancel">取消订单</view>
+      <view class="odetail__footer-btn odetail__footer-btn--primary" bindtap="onPay">去支付</view>
+    </block>
+    <!-- 已支付/配送中/已完成：查看配送 -->
+    <view wx:if="{{order.status === 1 || order.status === 2 || order.status === 3}}" class="odetail__footer-btn odetail__footer-btn--primary" bindtap="onViewLogistics">
+      查看配送
+    </view>
+  </view>
+</view>
+
+<!-- 加载中 -->
+<loading wx:elif="{{loading}}" show="{{true}}" text="加载中..." />

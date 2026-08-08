@@ -1,0 +1,17 @@
+# 依赖
+node_modules/
+
+# 环境变量（含密钥，禁止提交）
+.env
+.env.local
+
+# 日志
+*.log
+logs/
+
+# 微信开发者工具本地配置
+project.private.config.json
+
+# 系统文件
+.DS_Store
+Thumbs.db

@@ -1,0 +1,68 @@
+<!-- 订单确认页 -->
+<view class="order" wx:if="{{items.length}}">
+  <!-- 收货地址 -->
+  <view class="order__address" bindtap="onChooseAddress">
+    <view wx:if="{{address}}" class="order__address-info">
+      <view class="order__address-top">
+        <text class="order__address-name">{{address.receiver}}</text>
+        <text class="order__address-phone">{{address.phone}}</text>
+        <text wx:if="{{address.is_default}}" class="order__address-tag">默认</text>
+      </view>
+      <view class="order__address-detail">{{address.province}}{{address.city}}{{address.district}}{{address.detail}}</view>
+    </view>
+    <view wx:else class="order__address-empty">请选择收货地址</view>
+    <text class="order__address-arrow">›</text>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="order__goods">
+    <view class="order__goods-item" wx:for="{{items}}" wx:key="goods_id">
+      <image class="order__goods-img" src="{{item.goods.image}}" mode="aspectFill" lazy-load />
+      <view class="order__goods-body">
+        <view class="order__goods-name">{{item.goods.name}}</view>
+        <view class="order__goods-price">
+          <text class="order__goods-price-num">¥{{item.goods.price}}</text>
+          <text class="order__goods-qty">×{{item.quantity}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 备注 -->
+  <view class="order__remark">
+    <text class="order__remark-label">备注</text>
+    <input
+      class="order__remark-input"
+      placeholder="选填，给商家留言"
+      value="{{remark}}"
+      bindinput="onRemarkInput"
+    />
+  </view>
+
+  <!-- 金额明细 -->
+  <view class="order__amount">
+    <view class="order__amount-row">
+      <text>商品总额</text>
+      <text>¥{{totalAmount}}</text>
+    </view>
+    <view class="order__amount-row">
+      <text>运费</text>
+      <text>{{freight === '0.00' ? '免运费' : '¥' + freight}}</text>
+    </view>
+    <view class="order__amount-row order__amount-row--total">
+      <text>实付款</text>
+      <text class="order__amount-pay">¥{{payAmount}}</text>
+    </view>
+  </view>
+
+  <!-- 底部提交栏 -->
+  <view class="order__footer">
+    <view class="order__footer-price">
+      <text class="order__footer-label">实付：</text>
+      <text class="order__footer-num">¥{{payAmount}}</text>
+    </view>
+    <view class="order__footer-btn {{submitting ? 'order__footer-btn--disabled' : ''}}" bindtap="onSubmit">
+      提交订单
+    </view>
+  </view>
+</view>

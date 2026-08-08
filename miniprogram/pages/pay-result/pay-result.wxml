@@ -1,0 +1,12 @@
+<!-- 支付结果页 -->
+<view class="result">
+  <view class="result__icon">✅</view>
+  <view class="result__title">支付成功</view>
+  <view class="result__amount">¥{{payAmount}}</view>
+  <view class="result__order-no" wx:if="{{orderNo}}">订单号：{{orderNo}}</view>
+
+  <view class="result__actions">
+    <view class="result__btn result__btn--primary" bindtap="onViewOrder">查看订单</view>
+    <view class="result__btn" bindtap="onBackHome">返回首页</view>
+  </view>
+</view>

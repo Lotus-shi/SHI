@@ -1,0 +1,184 @@
+/* ===== 订单确认页样式 ===== */
+.order {
+  min-height: 100vh;
+  background: #f7f7f7;
+  padding-bottom: 140rpx;
+}
+
+/* 地址卡片 */
+.order__address {
+  background: #fff;
+  margin: 20rpx 24rpx 0;
+  border-radius: 16rpx;
+  padding: 28rpx 24rpx;
+  display: flex;
+  align-items: center;
+}
+.order__address-info {
+  flex: 1;
+}
+.order__address-top {
+  display: flex;
+  align-items: center;
+}
+.order__address-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+.order__address-phone {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+.order__address-tag {
+  margin-left: 16rpx;
+  padding: 2rpx 12rpx;
+  font-size: 20rpx;
+  color: #07c160;
+  border: 1rpx solid #07c160;
+  border-radius: 8rpx;
+}
+.order__address-detail {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+.order__address-empty {
+  flex: 1;
+  font-size: 28rpx;
+  color: #07c160;
+}
+.order__address-arrow {
+  color: #ccc;
+  font-size: 36rpx;
+}
+
+/* 商品列表 */
+.order__goods {
+  background: #fff;
+  margin: 20rpx 24rpx 0;
+  border-radius: 16rpx;
+  padding: 8rpx 24rpx;
+}
+.order__goods-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.order__goods-item:last-child {
+  border-bottom: none;
+}
+.order__goods-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+  background: #f2f2f2;
+}
+.order__goods-body {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.order__goods-name {
+  font-size: 28rpx;
+  color: #333;
+}
+.order__goods-price {
+  margin-top: 12rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.order__goods-price-num {
+  color: #ff4949;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.order__goods-qty {
+  color: #999;
+  font-size: 26rpx;
+}
+
+/* 备注 */
+.order__remark {
+  background: #fff;
+  margin: 20rpx 24rpx 0;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.order__remark-label {
+  width: 100rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.order__remark-input {
+  flex: 1;
+  font-size: 28rpx;
+}
+
+/* 金额明细 */
+.order__amount {
+  background: #fff;
+  margin: 20rpx 24rpx 0;
+  border-radius: 16rpx;
+  padding: 24rpx;
+}
+.order__amount-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #666;
+  padding: 8rpx 0;
+}
+.order__amount-row--total {
+  border-top: 1rpx solid #f2f2f2;
+  margin-top: 12rpx;
+  padding-top: 20rpx;
+  color: #333;
+}
+.order__amount-pay {
+  color: #ff4949;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+/* 底部提交栏 */
+.order__footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 110rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+.order__footer-price {
+  flex: 1;
+}
+.order__footer-label {
+  font-size: 26rpx;
+  color: #333;
+}
+.order__footer-num {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #ff4949;
+}
+.order__footer-btn {
+  width: 240rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #07c160;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+}
+.order__footer-btn--disabled {
+  opacity: 0.6;
+}

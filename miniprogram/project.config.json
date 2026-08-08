@@ -1,0 +1,13 @@
+{
+  "description": "生鲜果蔬线上订购配送微信小程序",
+  "miniprogramRoot": "miniprogram/",
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "fresh-fruit-veggie-mall",
+  "setting": {
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "urlCheck": false
+  }
+}

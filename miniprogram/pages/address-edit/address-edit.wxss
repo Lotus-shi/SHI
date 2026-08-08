@@ -1,0 +1,74 @@
+/* ===== 地址编辑页样式 ===== */
+.edit {
+  min-height: 100vh;
+  background: #f7f7f7;
+  padding: 20rpx 24rpx;
+}
+
+/* 微信地址导入 */
+.edit__quick {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 28rpx 24rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #07c160;
+  margin-bottom: 20rpx;
+}
+.edit__quick-arrow {
+  color: #ccc;
+  font-size: 36rpx;
+}
+
+/* 表单 */
+.edit__form {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 0 24rpx;
+}
+.edit__row {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.edit__row:last-child {
+  border-bottom: none;
+}
+.edit__label {
+  width: 160rpx;
+  font-size: 28rpx;
+  color: #333;
+  flex-shrink: 0;
+}
+.edit__input {
+  flex: 1;
+  font-size: 28rpx;
+}
+.edit__region {
+  flex: 1;
+  display: flex;
+}
+.edit__input--region {
+  width: 33%;
+}
+.edit__row--switch {
+  justify-content: space-between;
+}
+
+/* 保存按钮 */
+.edit__save-btn {
+  margin-top: 60rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background: #07c160;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 44rpx;
+}
+.edit__save-btn--disabled {
+  opacity: 0.6;
+}

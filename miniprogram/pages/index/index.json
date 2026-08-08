@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "鲜果鲜蔬",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "goods-card": "/components/goods-card/goods-card",
+    "empty": "/components/empty/empty",
+    "loading": "/components/loading/loading"
+  }
+}

@@ -1,0 +1,82 @@
+/* ===== 分类页样式 ===== */
+.category {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f7f7f7;
+}
+
+/* 搜索提示条 */
+.search-tip {
+  padding: 20rpx 24rpx;
+  background: #fff8e6;
+  color: #b8860b;
+  font-size: 26rpx;
+}
+
+/* 主体：左列表 + 右网格 */
+.category__body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* 左侧分类 */
+.category__side {
+  width: 180rpx;
+  background: #f2f2f2;
+  height: 100%;
+}
+.category__side-item {
+  padding: 28rpx 16rpx;
+  font-size: 26rpx;
+  color: #666;
+  text-align: center;
+  position: relative;
+}
+.category__side-item--active {
+  background: #fff;
+  color: #07c160;
+  font-weight: 600;
+}
+.category__side-item--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6rpx;
+  height: 40rpx;
+  background: #07c160;
+  border-radius: 0 4rpx 4rpx 0;
+}
+
+/* 右侧商品网格 */
+.category__main {
+  flex: 1;
+  height: 100%;
+  padding: 20rpx;
+}
+.category__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.category__grid goods-card {
+  width: calc(50% - 10rpx);
+  margin-bottom: 20rpx;
+}
+
+/* 空状态与加载 */
+.empty {
+  padding: 80rpx 0;
+  text-align: center;
+  color: #999;
+  font-size: 26rpx;
+}
+.load-more {
+  padding: 20rpx 0;
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+}

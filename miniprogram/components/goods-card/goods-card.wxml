@@ -1,0 +1,27 @@
+<!-- 商品卡片：图片 + 名称 + 价格 + 销量 -->
+<view class="goods-card" bindtap="onTap">
+  <view class="goods-card__img-wrap">
+    <image
+      class="goods-card__img"
+      src="{{goods.image}}"
+      mode="aspectFill"
+      lazy-load
+    />
+    <view wx:if="{{goods.is_hot}}" class="goods-card__tag">热销</view>
+    <view wx:if="{{goods.is_new}}" class="goods-card__tag goods-card__tag--new">新品</view>
+  </view>
+  <view class="goods-card__body">
+    <view class="goods-card__name">{{goods.name}}</view>
+    <view class="goods-card__price-row">
+      <view class="goods-card__price">
+        <text class="goods-card__price-symbol">¥</text>
+        <text class="goods-card__price-num">{{goods.price}}</text>
+      </view>
+      <text wx:if="{{goods.original_price}}" class="goods-card__price-original">¥{{goods.original_price}}</text>
+    </view>
+    <view class="goods-card__meta">
+      <text>已售{{goods.sales}}件</text>
+      <text class="goods-card__unit">{{goods.unit}}</text>
+    </view>
+  </view>
+</view>

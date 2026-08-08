@@ -1,0 +1,78 @@
+<!-- 地址编辑页 -->
+<view class="edit">
+  <!-- 微信地址快捷填充 -->
+  <view class="edit__quick" bindtap="onChooseAddress">
+    <text>📍 从微信地址导入</text>
+    <text class="edit__quick-arrow">›</text>
+  </view>
+
+  <!-- 表单 -->
+  <view class="edit__form">
+    <view class="edit__row">
+      <text class="edit__label">收货人</text>
+      <input
+        class="edit__input"
+        placeholder="请输入姓名"
+        value="{{form.receiver}}"
+        data-field="receiver"
+        bindinput="onInput"
+      />
+    </view>
+    <view class="edit__row">
+      <text class="edit__label">手机号</text>
+      <input
+        class="edit__input"
+        type="number"
+        placeholder="请输入手机号"
+        value="{{form.phone}}"
+        data-field="phone"
+        bindinput="onInput"
+      />
+    </view>
+    <view class="edit__row">
+      <text class="edit__label">省市区</text>
+      <view class="edit__region">
+        <input
+          class="edit__input edit__input--region"
+          placeholder="省"
+          value="{{form.province}}"
+          data-field="province"
+          bindinput="onInput"
+        />
+        <input
+          class="edit__input edit__input--region"
+          placeholder="市"
+          value="{{form.city}}"
+          data-field="city"
+          bindinput="onInput"
+        />
+        <input
+          class="edit__input edit__input--region"
+          placeholder="区/县"
+          value="{{form.district}}"
+          data-field="district"
+          bindinput="onInput"
+        />
+      </view>
+    </view>
+    <view class="edit__row">
+      <text class="edit__label">详细地址</text>
+      <input
+        class="edit__input"
+        placeholder="街道、门牌号等"
+        value="{{form.detail}}"
+        data-field="detail"
+        bindinput="onInput"
+      />
+    </view>
+    <view class="edit__row edit__row--switch">
+      <text class="edit__label">设为默认地址</text>
+      <switch checked="{{form.is_default}}" color="#07c160" bindchange="onToggleDefault" />
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="edit__save-btn {{submitting ? 'edit__save-btn--disabled' : ''}}" bindtap="onSave">
+    保存地址
+  </view>
+</view>

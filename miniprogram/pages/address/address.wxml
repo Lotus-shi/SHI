@@ -1,0 +1,35 @@
+<!-- 地址列表页 -->
+<view class="address">
+  <!-- 空状态 -->
+  <empty wx:if="{{!loading && !list.length}}" icon="📍" text="还没有收货地址" btnText="新增地址" bind:btn="onAdd" />
+
+  <!-- 地址列表 -->
+  <view class="address__list">
+    <view class="address__item" wx:for="{{list}}" wx:key="id">
+      <!-- 选择模式：点击整卡选中返回 -->
+      <view class="address__item-main" bindtap="{{selectMode ? 'onPickAddress' : 'onEdit'}}" data-index="{{index}}" data-id="{{item.id}}">
+        <view class="address__item-top">
+          <text class="address__item-name">{{item.receiver}}</text>
+          <text class="address__item-phone">{{item.phone}}</text>
+          <view wx:if="{{item.is_default}}" class="address__item-tag">默认</view>
+        </view>
+        <view class="address__item-detail">
+          {{item.province}}{{item.city}}{{item.district}}{{item.detail}}
+        </view>
+      </view>
+      <!-- 非选择模式：操作按钮 -->
+      <view class="address__item-actions" wx:if="{{!selectMode}}">
+        <view
+          class="address__action {{item.is_default ? 'address__action--disabled' : ''}}"
+          bindtap="onSetDefault"
+          data-id="{{item.id}}"
+        >{{item.is_default ? '默认地址' : '设为默认'}}</view>
+        <view class="address__action" bindtap="onEdit" data-id="{{item.id}}">编辑</view>
+        <view class="address__action address__action--danger" bindtap="onDelete" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部新增按钮 -->
+  <view class="address__add-btn" bindtap="onAdd">＋ 新增收货地址</view>
+</view>

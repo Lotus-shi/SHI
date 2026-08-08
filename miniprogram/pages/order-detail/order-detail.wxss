@@ -1,0 +1,199 @@
+/* ===== 订单详情页样式 ===== */
+.odetail {
+  min-height: 100vh;
+  background: #f7f7f7;
+  padding-bottom: 140rpx;
+}
+
+/* 状态栏 */
+.odetail__status {
+  padding: 40rpx 32rpx;
+  background: linear-gradient(135deg, #07c160, #05a04e);
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.odetail__status--cancel {
+  background: linear-gradient(135deg, #999, #777);
+}
+
+/* 步骤条 */
+.odetail__steps {
+  display: flex;
+  background: #fff;
+  padding: 32rpx 24rpx;
+}
+.odetail__step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.odetail__step-dot {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  border: 2rpx solid #ddd;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+  color: #fff;
+  z-index: 1;
+}
+.odetail__step-dot--done {
+  background: #07c160;
+  border-color: #07c160;
+}
+.odetail__step-dot--active {
+  background: #fff;
+  border-color: #07c160;
+  box-shadow: 0 0 0 6rpx rgba(7, 193, 96, 0.15);
+}
+.odetail__step-title {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.odetail__step-title--active {
+  color: #07c160;
+  font-weight: 600;
+}
+.odetail__step-line {
+  position: absolute;
+  top: 20rpx;
+  left: 50%;
+  width: 100%;
+  height: 2rpx;
+  background: #eee;
+  z-index: 0;
+}
+
+/* 通用区块 */
+.odetail__section {
+  background: #fff;
+  margin: 20rpx 24rpx 0;
+  border-radius: 16rpx;
+  padding: 24rpx;
+}
+.odetail__section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+/* 地址 */
+.odetail__address-top {
+  display: flex;
+  align-items: center;
+}
+.odetail__address-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+.odetail__address-phone {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+.odetail__address-detail {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 商品 */
+.odetail__goods {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.odetail__goods:last-child {
+  border-bottom: none;
+}
+.odetail__goods-img {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 12rpx;
+  background: #f2f2f2;
+}
+.odetail__goods-body {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.odetail__goods-name {
+  font-size: 28rpx;
+  color: #333;
+}
+.odetail__goods-price {
+  margin-top: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #999;
+}
+.odetail__goods-subtotal {
+  color: #333;
+  font-weight: 600;
+}
+
+/* 金额明细与订单信息行 */
+.odetail__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #666;
+  padding: 8rpx 0;
+}
+.odetail__row--total {
+  border-top: 1rpx solid #f2f2f2;
+  margin-top: 12rpx;
+  padding-top: 20rpx;
+  color: #333;
+}
+.odetail__pay {
+  color: #ff4949;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+/* 底部操作栏 */
+.odetail__footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 110rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 24rpx;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+.odetail__footer-btn {
+  padding: 16rpx 40rpx;
+  font-size: 28rpx;
+  color: #666;
+  border: 1rpx solid #ddd;
+  border-radius: 40rpx;
+  margin-left: 20rpx;
+}
+.odetail__footer-btn--primary {
+  color: #fff;
+  background: #07c160;
+  border-color: #07c160;
+}
+
+/* 加载中 */
+.odetail__loading {
+  padding-top: 200rpx;
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+}

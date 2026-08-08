@@ -1,0 +1,40 @@
+<!-- 分类页：左列表右网格 -->
+<view class="category">
+  <!-- 搜索模式提示条 -->
+  <view class="search-tip" wx:if="{{keyword}}">
+    搜索「{{keyword}}」，找到 {{goodsList.length}} 件商品
+  </view>
+
+  <view class="category__body" wx:else>
+    <!-- 左侧分类列表 -->
+    <scroll-view class="category__side" scroll-y>
+      <view
+        class="category__side-item {{activeCategoryId === item.id ? 'category__side-item--active' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="id"
+        bindtap="onCategoryTap"
+        data-id="{{item.id}}"
+      >
+        {{item.name}}
+      </view>
+    </scroll-view>
+
+    <!-- 右侧商品网格 -->
+    <scroll-view class="category__main" scroll-y bindscrolltolower="onScrollToLower">
+      <view class="category__grid">
+        <goods-card
+          wx:for="{{goodsList}}"
+          wx:key="id"
+          goods="{{item}}"
+        />
+      </view>
+
+      <!-- 空状态 -->
+      <empty wx:if="{{ready && !goodsList.length}}" icon="🍎" text="该分类暂无商品" />
+
+      <!-- 加载提示 -->
+      <loading show="{{loading}}" text="加载中..." />
+      <view class="load-more" wx:if="{{!hasMore && goodsList.length}}">— 已经到底啦 —</view>
+    </scroll-view>
+  </view>
+</view>

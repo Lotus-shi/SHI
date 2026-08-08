@@ -1,0 +1,64 @@
+<!-- 配送追踪页 -->
+<view class="logistics" wx:if="{{delivery}}">
+  <!-- 当前状态头部 -->
+  <view class="logistics__head">
+    <view class="logistics__head-icon">{{current.icon}}</view>
+    <view class="logistics__head-info">
+      <view class="logistics__head-status">{{current.text}}</view>
+      <view class="logistics__head-desc">{{current.desc}}</view>
+    </view>
+  </view>
+
+  <!-- 配送员信息 -->
+  <view class="logistics__courier" wx:if="{{delivery.courier_name}}">
+    <view class="logistics__courier-avatar">{{delivery.courier_name.charAt(0)}}</view>
+    <view class="logistics__courier-info">
+      <view class="logistics__courier-name">{{delivery.courier_name}}</view>
+      <view class="logistics__courier-desc">
+        <text>预计送达：{{formatTime(delivery.estimated_time)}}</text>
+        <text wx:if="{{delivery.delivered_at}}">已送达：{{formatTime(delivery.delivered_at)}}</text>
+      </view>
+    </view>
+    <view class="logistics__call-btn" bindtap="onCallCourier">☎ 电话</view>
+  </view>
+
+  <!-- 无配送员时提示 -->
+  <view class="logistics__courier" wx:else>
+    <view class="logistics__courier-info">
+      <view class="logistics__courier-desc">配送员分配后将在此展示，可点击拨打</view>
+    </view>
+  </view>
+
+  <!-- 物流时间轴 -->
+  <view class="logistics__timeline">
+    <view
+      class="logistics__node {{index === 0 ? 'logistics__node--current' : ''}}"
+      wx:for="{{timeline}}"
+      wx:key="time"
+    >
+      <view class="logistics__node-dot"></view>
+      <view class="logistics__node-body">
+        <view class="logistics__node-text {{index === 0 ? 'logistics__node-text--current' : ''}}">{{item.text}}</view>
+        <view class="logistics__node-time">{{item.timeText}}</view>
+      </view>
+    </view>
+    <view class="logistics__node logistics__node--current" wx:if="{{!timeline.length}}">
+      <view class="logistics__node-dot"></view>
+      <view class="logistics__node-body">
+        <view class="logistics__node-text logistics__node-text--current">等待分配配送员</view>
+        <view class="logistics__node-time">订单已支付，请耐心等待</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 订单号 -->
+  <view class="logistics__order-no">订单号：{{orderNo}}</view>
+
+  <!-- 开发模式：模拟配送端按钮 -->
+  <view class="logistics__mock" wx:if="{{isDev && delivery.status < 4}}" bindtap="onMockNextStatus">
+    模拟配送端：更新到下一状态（{{delivery.status === 0 ? '已分配' : delivery.status === 1 ? '取货中' : delivery.status === 2 ? '配送中' : '已送达'}}）
+  </view>
+</view>
+
+<!-- 加载中 -->
+<loading wx:elif="{{loading}}" show="{{true}}" text="加载中..." />

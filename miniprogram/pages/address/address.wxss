@@ -1,0 +1,91 @@
+/* ===== 地址列表页样式 ===== */
+.address {
+  min-height: 100vh;
+  background: #f7f7f7;
+  padding: 20rpx 24rpx 160rpx;
+}
+
+/* 空状态 */
+.address__empty {
+  padding-top: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.address__empty-icon {
+  font-size: 100rpx;
+}
+.address__empty-text {
+  margin-top: 24rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 地址卡片 */
+.address__item {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+}
+.address__item-top {
+  display: flex;
+  align-items: center;
+}
+.address__item-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+}
+.address__item-phone {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+.address__item-tag {
+  margin-left: 16rpx;
+  padding: 2rpx 12rpx;
+  font-size: 20rpx;
+  color: #07c160;
+  border: 1rpx solid #07c160;
+  border-radius: 8rpx;
+}
+.address__item-detail {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+}
+.address__item-actions {
+  margin-top: 20rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #f2f2f2;
+  display: flex;
+  justify-content: flex-end;
+}
+.address__action {
+  margin-left: 32rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+.address__action--disabled {
+  color: #07c160;
+}
+.address__action--danger {
+  color: #ff4949;
+}
+
+/* 新增按钮 */
+.address__add-btn {
+  position: fixed;
+  left: 24rpx;
+  right: 24rpx;
+  bottom: 40rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background: #07c160;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 44rpx;
+}

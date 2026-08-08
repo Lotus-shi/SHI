@@ -1,0 +1,48 @@
+<!-- 个人中心 -->
+<view class="user">
+  <!-- 用户信息头部（点头像选头像，点昵称编辑） -->
+  <view class="user__header">
+    <image wx:if="{{userInfo.avatar_url}}" class="user__avatar" src="{{userInfo.avatar_url}}" mode="aspectFill" bindtap="onChooseAvatar" />
+    <view wx:else class="user__avatar user__avatar--placeholder" bindtap="onChooseAvatar">👤</view>
+    <view class="user__info">
+      <view class="user__nickname-row" bindtap="onEditNickname">
+        <text class="user__nickname">{{userInfo.nickname || '未登录'}}</text>
+        <text class="user__edit-icon">✏️</text>
+      </view>
+      <view class="user__sub">{{userInfo.phone || '点击昵称修改资料'}}</view>
+    </view>
+  </view>
+
+  <!-- 订单快捷入口 -->
+  <view class="user__orders" bindtap="onGoAllOrders">
+    <view class="user__orders-head">
+      <text class="user__orders-title">我的订单</text>
+      <text class="user__orders-more">全部订单 ›</text>
+    </view>
+    <view class="user__orders-grid">
+      <view class="user__orders-item" wx:for="{{orders}}" wx:key="key" catchtap="onGoOrders" data-key="{{item.key}}">
+        <view class="user__orders-icon">{{item.icon}}</view>
+        <view class="user__orders-label">{{item.label}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="user__menu">
+    <view class="user__menu-item" bindtap="onGoAddress">
+      <text>📍</text>
+      <text class="user__menu-name">收货地址</text>
+      <text class="user__menu-arrow">›</text>
+    </view>
+    <view class="user__menu-item" bindtap="onContact">
+      <text>☎</text>
+      <text class="user__menu-name">联系客服</text>
+      <text class="user__menu-arrow">›</text>
+    </view>
+    <view class="user__menu-item" bindtap="onAbout">
+      <text>ℹ️</text>
+      <text class="user__menu-name">关于我们</text>
+      <text class="user__menu-arrow">›</text>
+    </view>
+  </view>
+</view>

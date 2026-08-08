@@ -1,0 +1,61 @@
+<!-- 订单列表页 -->
+<view class="olist">
+  <!-- 顶部 Tab -->
+  <view class="olist__tabs">
+    <view
+      class="olist__tab {{activeTab === item.key ? 'olist__tab--active' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="key"
+      bindtap="onTabTap"
+      data-key="{{item.key}}"
+    >{{item.label}}</view>
+  </view>
+
+  <!-- 空状态 -->
+  <empty wx:if="{{ready && !list.length}}" icon="📦" text="暂无相关订单" />
+
+  <!-- 订单卡片 -->
+  <view class="olist__list">
+    <view class="olist__card" wx:for="{{list}}" wx:key="id" bindtap="onGoDetail" data-id="{{item.id}}">
+      <!-- 卡片头部：订单号 + 状态 -->
+      <view class="olist__card-head">
+        <text class="olist__card-no">单号 {{item.order_no}}</text>
+        <text class="olist__card-status {{item.status === 0 ? 'olist__card-status--pay' : ''}}">{{item.statusText}}</text>
+      </view>
+
+      <!-- 商品摘要（最多展示前 3 件 + 共N件） -->
+      <view class="olist__goods">
+        <image
+          class="olist__goods-img"
+          wx:for="{{item.items}}"
+          wx:for-item="g"
+          wx:key="goods_id"
+          wx:if="{{index < 3}}"
+          src="{{g.goods_image}}"
+          mode="aspectFill"
+          lazy-load
+        />
+        <view class="olist__goods-more" wx:if="{{item.items.length > 3}}">+{{item.items.length - 3}}</view>
+      </view>
+
+      <!-- 卡片底部：金额 + 操作 -->
+      <view class="olist__card-foot">
+        <view class="olist__card-amount">
+          <text class="olist__card-amount-label">共{{item.items.length}}件 实付</text>
+          <text class="olist__card-amount-num">¥{{item.pay_amount}}</text>
+        </view>
+        <view class="olist__card-actions">
+          <!-- 待支付：取消 + 去支付（catchtap 阻止冒泡到卡片跳转） -->
+          <block wx:if="{{item.status === 0}}">
+            <view class="olist__btn" catchtap="onCancel" data-id="{{item.id}}">取消订单</view>
+            <view class="olist__btn olist__btn--primary" catchtap="onPay" data-id="{{item.id}}">去支付</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载提示 -->
+  <view class="olist__load" wx:if="{{loading}}">加载中...</view>
+  <view class="olist__load" wx:elif="{{!hasMore && list.length}}">— 已经到底啦 —</view>
+</view>

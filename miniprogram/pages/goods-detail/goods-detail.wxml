@@ -1,0 +1,58 @@
+<!-- 商品详情页 -->
+<view class="detail" wx:if="{{goods}}">
+  <!-- 顶部图片轮播 -->
+  <swiper class="detail__swiper" circular indicator-dots>
+    <swiper-item wx:for="{{images}}" wx:key="*this">
+      <image class="detail__swiper-img" src="{{item}}" mode="aspectFill" />
+    </swiper-item>
+  </swiper>
+
+  <!-- 价格与标题 -->
+  <view class="detail__info">
+    <view class="detail__price-row">
+      <view class="detail__price">
+        <text class="detail__price-symbol">¥</text>
+        <text class="detail__price-num">{{goods.price}}</text>
+        <text class="detail__price-unit">/{{goods.unit}}</text>
+      </view>
+      <text wx:if="{{goods.original_price}}" class="detail__price-original">¥{{goods.original_price}}</text>
+    </view>
+    <view class="detail__name">{{goods.name}}</view>
+    <view class="detail__meta">
+      <text>已售{{goods.sales}}件</text>
+      <text>库存 {{goods.stock}}{{goods.unit}}</text>
+      <text>{{goods.category.name}}</text>
+    </view>
+  </view>
+
+  <!-- 规格/数量选择 -->
+  <view class="detail__section">
+    <view class="detail__section-row">
+      <text class="detail__section-label">数量</text>
+      <view class="stepper">
+        <view class="stepper__btn {{quantity <= 1 ? 'stepper__btn--disabled' : ''}}" bindtap="onMinus">−</view>
+        <view class="stepper__num">{{quantity}}</view>
+        <view class="stepper__btn" bindtap="onPlus">＋</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 图文详情 -->
+  <view class="detail__section detail__goods-detail">
+    <view class="detail__section-title">图文详情</view>
+    <rich-text class="detail__rich" nodes="{{goods.detail}}" />
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="detail__footer">
+    <view class="detail__footer-contact" bindtap="onContact">
+      <text class="detail__footer-icon">☎</text>
+      <text class="detail__footer-text">客服</text>
+    </view>
+    <view class="detail__footer-btn detail__footer-btn--cart" bindtap="onAddToCart">加入购物车</view>
+    <view class="detail__footer-btn detail__footer-btn--buy" bindtap="onBuyNow">立即购买</view>
+  </view>
+</view>
+
+<!-- 加载中 -->
+<loading wx:elif="{{loading}}" show="{{true}}" text="加载中..." />

@@ -1,0 +1,57 @@
+<!-- 购物车页 -->
+<view class="cart">
+  <!-- 空购物车 -->
+  <empty
+    wx:if="{{!loading && !list.length}}"
+    icon="🛒"
+    text="购物车还是空的"
+    btnText="去逛逛"
+    bind:btn="onGoShopping"
+  />
+
+  <!-- 商品列表 -->
+  <view class="cart__list" wx:else>
+    <view class="cart__item" wx:for="{{list}}" wx:key="goods_id">
+      <!-- 单选 -->
+      <view
+        class="checkbox {{item.checked ? 'checkbox--checked' : ''}}"
+        bindtap="onToggleCheck"
+        data-index="{{index}}"
+      >{{item.checked ? '✓' : ''}}</view>
+
+      <!-- 商品信息 -->
+      <image
+        class="cart__item-img"
+        src="{{item.goods.image}}"
+        mode="aspectFill"
+        lazy-load
+        bindtap="onGoDetail"
+        data-id="{{item.goods.id}}"
+      />
+      <view class="cart__item-body" bindtap="onGoDetail" data-id="{{item.goods.id}}">
+        <view class="cart__item-name">{{item.goods.name}}</view>
+        <view class="cart__item-price">¥{{item.goods.price}}<text class="cart__item-unit">/{{item.goods.unit}}</text></view>
+      </view>
+
+      <!-- 数量步进器 -->
+      <view class="stepper">
+        <view class="stepper__btn" bindtap="onMinus" data-index="{{index}}">−</view>
+        <view class="stepper__num">{{item.quantity}}</view>
+        <view class="stepper__btn" bindtap="onPlus" data-index="{{index}}">＋</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部结算栏 -->
+  <view class="cart__footer" wx:if="{{list.length}}">
+    <view class="cart__footer-left" bindtap="onToggleAll">
+      <view class="checkbox {{allChecked ? 'checkbox--checked' : ''}}">{{allChecked ? '✓' : ''}}</view>
+      <text>全选</text>
+    </view>
+    <view class="cart__footer-center">
+      <text class="cart__total-label">合计：</text>
+      <text class="cart__total-price">¥{{totalPrice}}</text>
+    </view>
+    <view class="cart__footer-btn" bindtap="onCheckout">结算</view>
+  </view>
+</view>
